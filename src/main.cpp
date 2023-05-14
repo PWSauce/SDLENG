@@ -12,8 +12,6 @@ int main(int argv, char** args)
 
     bool isRunning = true;
     SDL_Event event;
-    Vector2<int> vector{10, 10};
-    std::cout << vector.length() << std::endl;
 
     while (isRunning)
     {
