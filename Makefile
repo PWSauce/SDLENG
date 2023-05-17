@@ -12,7 +12,7 @@ CXX := g++
 CXXDBGFLAGS += -g -fdiagnostics-color=always
 CXXFLAGS += -std=c++17 $(CXXDBGFLAGS) $(CXXWARN)
 CXXWARN += -Wno-deprecated-declarations -Wall -Wextra -pedantic -Weffc++
-LDFLAGS += -lSDL2 -lGL
+LDFLAGS += -lSDL2 -lGL -lSDL2_image
 
 # Rule variables
 TARGET := main
