@@ -14,6 +14,11 @@ public:
     Renderer operator=(Renderer const&) = delete;
 
     SDL_Renderer *renderer() const;
+
+    void bufferDraw();
+    /// Updates the screen with the rendering from the backbuffer.
+    void render();
+    void renderClear();
 private:
     SDL_Renderer *rend;
 };

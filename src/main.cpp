@@ -3,6 +3,9 @@
 #include <SDL2/SDL_image.h>
 #include "renderer.hpp"
 #include "window.hpp"
+#include "sprite.hpp"
+#include "gameObject.hpp"
+#include "vector2.hpp"
 //STBImage
 
 int main(int argv, char** args)
@@ -19,9 +22,9 @@ int main(int argv, char** args)
     SDL_Texture *texture{};
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Loading %s", "resources/RubberDucky.png");
     texture = IMG_LoadTexture(rend.renderer(), "resources/RubberDucky.png");
-    SDL_Rect dest;
-    dest.x = 100;
-    dest.y = 100;
+    Vector2<int> vector2{100, 100};
+    Sprite sprite {rend, "resources/RubberDucky.png", vector2};
+    GameObject object{sprite};
 
     while (isRunning)
     {
@@ -43,8 +46,7 @@ int main(int argv, char** args)
 
         SDL_RenderClear(rend.renderer());
 
-        SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
-        SDL_RenderCopy(rend.renderer(), texture, NULL, &dest);
+        object.draw(rend);
         SDL_SetRenderDrawColor(rend.renderer(), 255, 0, 0, 255);
 
         SDL_RenderPresent(rend.renderer());
@@ -52,6 +54,7 @@ int main(int argv, char** args)
 
     SDL_DestroyRenderer(rend.renderer());
     SDL_DestroyWindow(wind.window());
+    SDL_DestroyTexture(texture);
     SDL_Quit();
 
     return 0;
