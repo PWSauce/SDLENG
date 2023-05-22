@@ -1,6 +1,8 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include "renderer.hpp"
+#include "window.hpp"
 
 class Game
 {
@@ -14,8 +16,8 @@ protected:
     virtual void fixedUpdate();
     virtual void draw();
 private:
-    SDL_Renderer *renderer;
-    SDL_Window *window;
+    Renderer renderer;
+    Window window;
 
     bool isRunning;
 };

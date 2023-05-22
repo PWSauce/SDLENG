@@ -1,17 +1,14 @@
 #pragma once
 
-#include "sprite.hpp"
-#include "renderer.hpp"
+#include "vector2.hpp"
 
 class GameObject
 {
 public:
-    GameObject(Sprite const& sprite);
+    GameObject() = default;
 
-    void draw(Renderer const& rend);
+    Vector2 const&localPosition() const;
+    Vector2 const&globalPosition() const;
 private:
-    Sprite sprite;
-
-    int x;
-    int y;
+    Vector2 _position;
 };

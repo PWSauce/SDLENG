@@ -1,22 +1,16 @@
 #pragma once
 
-#include <SDL2/SDL.h>
-#include "renderer.hpp"
+#include <string>
+#include "gameObject.hpp"
 #include "vector2.hpp"
 
-class Sprite
+class Sprite : public GameObject
 {
 public:
-    Sprite(Renderer const& rend, char const* path, Vector2<int> const& size);
-    Sprite(Sprite const&) = default;
-    ~Sprite();
+    Sprite(std::string const& path, Vector2 const& size);
 
-    Sprite& operator=(Sprite const&) = delete;
-
-    SDL_Texture *texture() const;
-    Vector2<int> const&size() const;
-    int queryTexture(Uint32 *, int *);
+    std::string const&texturePath() const;
 private:
-    SDL_Texture *_texture;
-    Vector2<int> _size;
+    std::string texPath;
+    Vector2 size;
 };
